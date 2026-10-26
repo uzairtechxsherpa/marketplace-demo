@@ -328,6 +328,19 @@ marketplaceRouter.get("/subscription", requireAuth, (req, res) => {
 
 const ACK_ACTIONS = new Set(["ChangePlan", "ChangeQuantity", "Reinstate"]);
 
+marketplaceRouter.get("/webhook", (_req, res) => {
+  res.json({
+    ok: true,
+    endpoint: "marketplace webhook",
+    method: "POST",
+    note: "Microsoft sends POST here. GET only confirms the URL is live.",
+  });
+});
+
+marketplaceRouter.head("/webhook", (_req, res) => {
+  res.status(200).end();
+});
+
 marketplaceRouter.post("/webhook", async (req, res) => {
   console.log(
     `[webhook] ${req.body?.action || "unknown"} sub=${req.body?.subscriptionId || "none"}`
