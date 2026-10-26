@@ -1,0 +1,19 @@
+{
+  "name": "marketplace-demo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w backend",
+    "tunnel": "node scripts/tunnel.mjs",
+    "offer": "node scripts/dev.mjs --tunnel",
+    "check": "node scripts/e2e-check.mjs"
+  }
+}
